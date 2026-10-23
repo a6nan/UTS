@@ -2,6 +2,8 @@ body {
     font-family: "Cormorant Garamond", serif;
     font-optical-sizing: auto;
     font-weight: 200;
+    color: #666B5F;
+    font-size: 1rem;
 }
 
 .font-serif {
@@ -13,7 +15,6 @@ body {
     font-family: "Inter", sans-serif;
     font-optical-sizing: auto;
     font-weight:200;
-    font-size:1rem;
 }
 .hero-section {
     background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7)), url('../images/landingpagepot.png');
@@ -37,4 +38,12 @@ body {
   cursor: default;
   text-decoration: none;
   color: inherit;
+}
+
+.color-hijautua {
+    color: #303E2E;
+}
+
+.bgcolor-cream {
+    background-color: #F7F4ED;
 }
