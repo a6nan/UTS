@@ -58,4 +58,44 @@
             console.error("Gagal menyalin alamat: ", err);
         });
     }
+
+    document.getElementById('rsvpForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    const nama = document.getElementById('nama').value;
+    const hadir = document.querySelector('input[name="hadir"]:checked').value;
+    const jumlah = document.getElementById('jumlah').value;
+    const ucapan = document.getElementById('ucapan').value;
+    const submitButton = this.querySelector('button[type="submit"]');
+
+    const originalText = submitButton.innerHTML;
+    submitButton.innerHTML = '<i class="bi bi-hourglass-split me-2"></i> Mengirim...';
+    submitButton.disabled = true;
+
+    try {
+        const response = await fetch('http://localhost:3000/api/rsvp', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ nama, hadir, jumlah, ucapan })
+        });
+
+        const result = await response.json();
+
+        if (response.ok) {
+            alert(result.message);
+            this.reset(); 
+            document.getElementById('charCount').innerText = "0 / 300 karakter";
+        } else {
+            alert(result.error);
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        alert('Gagal terhubung ke server. Pastikan backend sudah berjalan.');
+    } finally {
+        submitButton.innerHTML = originalText;
+        submitButton.disabled = false;
+    }
+});
     
