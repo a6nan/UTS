@@ -1,0 +1,40 @@
+body {
+    font-family: "Cormorant Garamond", serif;
+    font-optical-sizing: auto;
+    font-weight: 200;
+}
+
+.font-serif {
+    font-family: "Pinyon Script", cursive;
+    font-weight: 400;
+}
+
+.inter {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight:200;
+    font-size:1rem;
+}
+.hero-section {
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7)), url('../images/landingpagepot.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+@media (min-width: 768px) {
+    .hero-section {
+        background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7)), url('../images/landingpage.png');
+    }
+    
+    .hero-section .display-1 {
+        font-size: 5.5rem; 
+    }
+}
+
+.link-mati {
+  pointer-events: none;
+  cursor: default;
+  text-decoration: none;
+  color: inherit;
+}
