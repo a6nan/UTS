@@ -156,7 +156,69 @@
         <p>KAMI MENANTIKAN KEHANDIRAN ANDA</p>
         <p class="font-serif display-4 color-hijautua" style="font-family: 'Fraunces', serif;">Sampai Jumpa</p>
         <p class="font-serif display-4 color-hijautua" id="nama-tamu-bawah" style="font-family: 'Fraunces', serif;">Tamu terkasih</p>
+        <p class="fs-5">Mohon konfirmasi kehadiran Anda<br>paling lambat 13 Juni 2027 agar kami dapat menyambut <br>Anda dengan baik.</p>
+        <div class="container text-start inter" style="max-width: 500px;">
+            <form>
+                <p class="small text-muted mb-4">Tanda * wajib diisi</p>
+
+                <!-- Input Nama Lengkap -->
+                <div class="mb-4">
+                    <label for="nama" class="form-label color-hijautua">Nama lengkap *</label>
+                    <input type="text" class="form-control p-3 bg-white" id="nama" placeholder="Nama lengkap Anda" required>
+                </div>
+
+                <!-- Input Pilihan Kehadiran (Radio Box) -->
+                <div class="mb-4">
+                    <label class="form-label color-hijautua">Apakah Anda akan hadir? *</label>
+                    
+                    <label class="radio-box d-flex align-items-center gap-3 w-100 mb-2">
+                        <input class="form-check-input m-0" type="radio" name="hadir" value="ya" checked>
+                        <span>Ya, saya akan hadir</span>
+                    </label>
+
+                    <label class="radio-box d-flex align-items-center gap-3 w-100">
+                        <input class="form-check-input m-0" type="radio" name="hadir" value="tidak">
+                        <span>Maaf, belum bisa hadir</span>
+                    </label>
+                </div>
+
+                <div class="mb-4">
+                    <label for="jumlah" class="form-label color-hijautua">Jumlah tamu *</label>
+                    <select class="form-select p-3 bg-white" id="jumlah" required>
+                        <option value="1">1 orang</option>
+                        <option value="2" selected>2 orang</option>
+                    </select>
+                    <div class="form-text mt-2" style="font-size: 0.85rem;">Termasuk Anda. Maksimal 2 orang per undangan.</div>
+                </div>
+
+                <div class="mb-4">
+                    <label for="ucapan" class="form-label color-hijautua">Doa & ucapan (opsional)</label>
+                    <textarea class="form-control p-3 bg-white" id="ucapan" rows="4" maxlength="300" placeholder="Tuliskan doa baik untuk kami..."></textarea>
+                    <div class="text-end form-text mt-1" id="charCount" style="font-size: 0.85rem;">0 / 300 karakter</div>
+                </div>
+
+                <button type="submit" class="btn w-100 py-3 rounded-3 mb-3 fw-bold" style="background-color: #303E2E; color: #F7F4ED;">
+                    <i class="bi bi-send me-2"></i> Kirim konfirmasi & ucapan
+                </button>        
+            </form>
+        </div>
     </section>
+    <section class="end-section d-flex flex-column align-items-center justify-content-between text-center text-white py-5 vh-100">
+        <div class="top-content mt-4">
+            <p>UNDANGAN PERNIKAHAN</p>
+            <p class="font-serif display-3">Alya&Raka</p>
+            <p class="inter">20 Desember 2026</p>
+        </div>
+        <div class="button-content mb-2 px-4 w-100 mx-auto" style="max-width: 50rem;">
+            <img src="images/sprout.png" style="padding-bottom: 10px;">
+            <p>Kepada Bapak/Ibu/Saudara/i</p>
+            <p class="font-serif display-4" id="nama-tamu" style="font-family: 'Fraunces', serif;">Tamu terkasih</p>
+            <p class="pb-4">Ada bahagia yang ingin kami bagi. bersama Anda di hari istimewa kami.</p>
+            <a href="#isi-undangan" class="btn btn-light py-2 w-100 rounded-4 gap-5 flex-row color-hijautua">
+            <i class="bi bi-envelope-open-heart"></i> Buka Undangan</a>
+        </div>
+    </section>
+
 </body>
 <script>
     const urlParams = new URLSearchParams(window.location.search);
@@ -199,5 +261,15 @@
             document.getElementById("detik").innerText = "00";
         }
     }, 1000);
+
+    const ucapanInput = document.getElementById('ucapan');
+    const charCount = document.getElementById('charCount');
+    
+    if (ucapanInput && charCount) {
+        ucapanInput.addEventListener('input', function() {
+            const length = this.value.length;
+            charCount.innerText = length + " / 300 karakter";
+        });
+    }
 </script>
 </html>
