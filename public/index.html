@@ -319,7 +319,6 @@
         submitButton.disabled = false;
     }
 });
-// Mengambil elemen HTML
 const bgMusic = document.getElementById('bg-music');
 const btnMusik = document.getElementById('btn-musik');
 const ikonMusik = document.getElementById('ikon-musik');
@@ -345,7 +344,6 @@ function toggleMusic() {
 
 if (btnBuka) {
     btnBuka.addEventListener('click', function() {
-        // Jika musik belum menyala, nyalakan
         if (!isPlaying) {
             toggleMusic();
         }
