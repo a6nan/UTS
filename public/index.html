@@ -147,7 +147,7 @@
         <div>
             <img src="images/tempat.png" alt="Lokasi Acara" class="img-fluid rounded-1 m-3 w-100 shadow-sm" style="object-fit: cover;">
             <p class="display-5 color-hijautua">Pendopo Jayengrana</p>
-            <p class="fs-5">Jl. Genteng Kali No. 85, Genteng, Surabaya, East Java</p>
+            <p class="fs-5">Jl. Genteng Kali No. 85, Genteng, Surabaya, Jawa Timur</p>
             <p class="">Akad dan resepsi di lokasi yang sama. Area parkir tersedia di sisi pendopo.</p>
             <a href="https://maps.app.goo.gl/8givzGSzCG5Fs6e29" target="_blank" class="btn btn-light p-3 w-100 rounded-4 gap-5 flex-row fw-bold" style="background-color: #303E2E; color:#D8D9CB;">
             <i class="bi bi-geo-alt"></i> Buka Google Maps</a>
@@ -271,7 +271,7 @@
     }
 
     function salinTeks() {
-        const teks = "Jl. Genteng Kali No. 85, Genteng, Surabaya, East Java";
+        const teks = "Jl. Genteng Kali No. 85, Genteng, Surabaya, Jawa Timur";
 
         navigator.clipboard.writeText(teks).then(() => {
             alert("Alamat berhasil disalin!");
@@ -294,7 +294,7 @@
     submitButton.disabled = true;
 
     try {
-        const response = await fetch('http://localhost:3000/api/rsvp', {
+        const response = await fetch('api/rsvp', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
