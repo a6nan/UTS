@@ -25,7 +25,7 @@
             <p>Kepada Bapak/Ibu/Saudara/i</p>
             <p class="font-serif display-4" id="nama-tamu" style="font-family: 'Fraunces', serif;">Tamu terkasih</p>
             <p class="pb-4">Ada bahagia yang ingin kami bagi. bersama Anda di hari istimewa kami.</p>
-            <a href="#isi-undangan" class="btn btn-light py-2 w-100 rounded-4 gap-5 flex-row color-hijautua">
+            <a href="#isi-undangan" id="btn-buka" class="btn btn-light py-2 w-100 rounded-4 gap-5 flex-row color-hijautua">
             <i class="bi bi-envelope-open-heart"></i> Buka Undangan</a>
         </div>
     </section>
@@ -33,8 +33,9 @@
     <section id="isi-undangan" class="pt-4 min-vh-100 d-flex flex-column py-4 px-4 bgcolor-cream">
         <div class="d-flex align-items-center justify-content-between">
             <p class="font-serif mb-1 px-3 fs-1 ps-4 color-hijautua">a / r</p>
-            <button class="btn btn-light btn-outline-secondary py-2 px-3 rounded-5 color-hijautua">
-            <i class="bi bi-volume-mute"></i> Musik nonaktif</button>
+            <button id="btn-musik" class="btn btn-light btn-outline-secondary py-2 px-3 rounded-5 color-hijautua">
+            <i id="ikon-musik" class="bi bi-volume-mute"></i> <span id="teks-musik">Musik nonaktif</span>
+</button>
         </div>
         <div class="d-flex flex-column align-items-center text-center py-5">
             <p>DENGAN CINTA, KAMI MENGUNDANG</p>
@@ -214,6 +215,9 @@
         </div>
     </section>
 </body>
+<audio id="bg-music" loop>
+    <source src="audio/soundtrack.mp3" type="audio/mpeg">
+</audio>
 <script>
         const urlParams = new URLSearchParams(window.location.search);
     let namaTamu = urlParams.get('to');
@@ -315,5 +319,41 @@
         submitButton.disabled = false;
     }
 });
+// Mengambil elemen HTML
+const bgMusic = document.getElementById('bg-music');
+const btnMusik = document.getElementById('btn-musik');
+const ikonMusik = document.getElementById('ikon-musik');
+const teksMusik = document.getElementById('teks-musik');
+const btnBuka = document.getElementById('btn-buka');
+
+let isPlaying = false;
+
+function toggleMusic() {
+    if (isPlaying) {
+        bgMusic.pause();
+        ikonMusik.classList.remove('bi-volume-up');
+        ikonMusik.classList.add('bi-volume-mute');
+        teksMusik.innerText = "Musik nonaktif";
+    } else {
+        bgMusic.play();
+        ikonMusik.classList.remove('bi-volume-mute');
+        ikonMusik.classList.add('bi-volume-up');
+        teksMusik.innerText = "Musik aktif";
+    }
+    isPlaying = !isPlaying;
+}
+
+if (btnBuka) {
+    btnBuka.addEventListener('click', function() {
+        // Jika musik belum menyala, nyalakan
+        if (!isPlaying) {
+            toggleMusic();
+        }
+    });
+}
+
+if (btnMusik) {
+    btnMusik.addEventListener('click', toggleMusic);
+}
 </script>
 </html>
